@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan</title>
+    <style>
+        :root{
+            --light_color1: #FFFFEC;
+            --light_color2: #F1E4C3;
+            --light_color3: #C6A969;
+            --light_color4: #597E52;
+
+            --dark_color1: #040D12;
+            --dark_color2: #183D3D;
+            --dark_color3: #5C8374;
+            --dark_color4: #93B1A6;
+        }
+
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            height: 300vh;
+            transition: background-color 1s ease;
+        }
+
+        .light_mode{
+            background-color: var(--light_color1);
+        }
+
+        .dark_mode{
+            background-color: var(--dark_color1);
+        }
+
+        .hidden{
+            display: none;
+            opacity: 0;
+        }
+
+        .dark_color2{
+            color: var(--dark_color2);
+        }
+
+        .dark_color3{
+            color: var(--dark_color3);
+        }
+
+        .dark_color4{
+            color: var(--dark_color4);
+        }
+
+        .light_color2{
+            color: var(--light_color2);
+        }
+
+        .light_color3{
+            color: var(--light_color3);
+        }
+
+        .light_color4{
+            color: var(--light_color4);
+        }
+
+        /* ==================================================================================================== */
+        #bagian_cover{
+            height: 100vh;
+            display: flex;
+        }
+
+        #bagian_cover > #atas_kanan{
+            width: 70%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            padding: 10px;
+        }
+
+        #bagian_cover > #atas_kanan > h1{
+            /* color: var(--dark_color3); */
+            font-size: 90px;
+        }
+
+        /* #bagian_cover > #atas_kanan > h2{
+            /* color: var(--dark_color3); 
+        }
+
+        #bagian_cover > #atas_kanan > h3{
+            /* color: var(--dark_color3); 
+        } */
+
+        #bagian_cover > #atas_kiri{
+            width: 30%;
+            background-color: var(--dark_color2);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        #bagian_cover > #atas_kiri > h2{
+            cursor: pointer;
+            transition: opacity 2s ease-in-out;
+            opacity: 1;
+            font-size: 50px;
+        }
+
+        #bagian_cover > #atas_kiri > #atas_kiri_bawah{
+            height: 50%;
+            padding: 5px;
+        }
+
+        #bagian_cover > #atas_kiri > #atas_kiri_bawah > h3{
+            margin: 10px;
+            font-size: 20px;
+            line-height: 25px;
+            /* color: var(--dark_color3); */
+        }
+
+        #bagian_cover > #atas_kiri > #atas_kiri_bawah > p{
+            margin: 10px;
+            font-size: 20px;
+            line-height: 25px;
+            /* color: var(--dark_color4); */
+        }
+        /* ==================================================================================================== */
+        #bagian_invitation{
+            height: 100vh;
+        }
+
+        #bagian_invitation > #tengah_atas{
+            height: 50%;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        #bagian_invitation > #tengah_bawah{
+            height: 50%;
+            display: flex;
+        }
+
+        #bagian_invitation > #tengah_bawah > #tengah_bawah_kiri{
+            background-color: var(--dark_color3);
+            width: 50%;
+            margin-right: 2px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            padding: 15px;
+        }
+
+        /* #bagian_invitation > #tengah_bawah > #tengah_bawah_kiri > h2{
+            /* color: var(--dark_color2); 
+        } */
+
+        #bagian_invitation > #tengah_bawah > #tengah_bawah_kiri > ul > li{
+            color: var(--dark_color4);
+            box-sizing: border-box;
+            margin: 5px;
+        }
+
+        #bagian_invitation > #tengah_bawah > #tengah_bawah_kanan{
+            background-color: var(--dark_color3);
+            width: 50%;
+            margin-left: 2px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            padding: 15px;
+        }
+
+        #bagian_invitation > #tengah_bawah > #tengah_bawah_kanan > h2{
+            color: var(--dark_color2);
+        }
+
+        #bagian_invitation > #tengah_bawah > #tengah_bawah_kanan > ul > li{
+            color: var(--dark_color4);
+            margin: 5px;
+        }
+        /* ==================================================================================================== */
+        #bagian_closing{
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 50px;
+        }
+
+        /* #bagian_closing > h1{
+            color: var(--dark_color4);
+        }
+
+        #bagian_closing > div#countdown > h2{
+            color: var(--dark_color4);
+        } */
+
+        /* ##################################################################################################################### */
+
+        @media only screen and (max-width: 450px){
+            
+            #bagian_cover > #atas_kanan > h1{
+                font-size: 50px;
+            }
+
+            #atas_kiri_bawah{
+                overflow:scroll;
+            }
+
+            #tengah_bawah > #tengah_bawah_kiri, #tengah_bawah_kanan{
+                height: 150%;
+            }
+            
+            img{
+                margin-bottom: 50px;
+            };
+        }
+    </style>
+</head> 
+<body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            // console.log("Script executed!");
+            // ===============================================================================================================
+            const targetDateString = "2024-01-20T00:00:00";
+            const targetDate = new Date(targetDateString);
+
+            if (isNaN(targetDate.getTime())){
+                console.error("Invalid target date:", targetDateString);
+            } 
+            else{
+                const countdownInterval = setInterval(updateCountdown, 1000);
+            }
+
+            function updateCountdown(){
+                const currentDate = new Date().getTime();
+
+                if (isNaN(currentDate)){
+                    console.error("Invalid current date.");
+                    return;
+                }
+
+                const timeDifference = targetDate - currentDate;
+
+                if (isNaN(timeDifference)){
+                    console.error("Error calculating time difference.");
+                    return;
+                }
+
+                const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+                document.getElementById("countdown").innerHTML = `<h2> ${days} days : ${hours} hours : ${minutes} minutes : ${seconds} seconds</h2>`;
+
+                if (timeDifference <= 0){
+                    clearInterval(countdownInterval);
+                    document.getElementById("countdown").innerHTML = "<p>Countdown expired!</p>";
+                }
+            }
+            // ===============================================================================================================
+            
+            const cover_atas_kiri = document.getElementById("atas_kiri");
+
+            const tengah_bawah_kiri = document.getElementById("tengah_bawah_kiri");
+            const tengah_bawah_kanan = document.getElementById("tengah_bawah_kanan");
+            const tengah_bawah_li = document.querySelectorAll("li");
+
+            const element_color2 = document.querySelectorAll(".dark_color2");
+            const element_dark_color3 = document.querySelectorAll(".dark_color3");
+            const element_dark_color4 = document.querySelectorAll(".dark_color4");
+
+            // console.log(element_color2, element_dark_color3, element_dark_color4)
+
+            const moon = document.getElementById("moon");
+            const sun = document.getElementById("sun");
+
+            const userMode = getCookie("userMode");
+
+            console.log("Initial cookie: ", userMode);
+
+            if (userMode) {
+                document.body.classList.add(userMode);
+                
+                console.log("Applied class:", userMode);
+            }
+
+            if(userMode == "dark_mode"){
+                sun.classList.add("hidden");
+            }
+            else{
+                moon.classList.add("hidden");
+            }
+
+            function toggleVisibility(showId, hideId) {
+                const showElement = document.getElementById(showId);
+                const hideElement = document.getElementById(hideId);
+
+                hideElement.style.opacity = '0';
+                hideElement.classList.add('hidden');
+
+                showElement.classList.remove('hidden');
+                setTimeout(() => {
+                    showElement.style.opacity = '1';
+                }, 10);
+            }
+
+            if (userMode == "light_mode"){
+
+                cover_atas_kiri.style.backgroundColor = "var(--light_color2)";
+
+                tengah_bawah_kiri.style.backgroundColor = "var(--light_color3)";
+                tengah_bawah_kanan.style.backgroundColor = "var(--light_color3)";
+
+                tengah_bawah_li.forEach(function(li) {
+                    li.style.color = "var(--light_color4)";
+                });
+
+                element_color2.forEach(function(tag){
+                    tag.style.color = "var(--light_color2)"
+                });
+
+                element_dark_color3.forEach(function(tag){
+                    tag.style.color = "var(--light_color3)"
+                });
+
+                element_dark_color4.forEach(function(tag){
+                    tag.style.color = "var(--light_color4)"
+                });
+            };
+
+            function setCookie(name, value, days) {
+                const date = new Date();
+                date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+                const expires = "expires=" + date.toUTCString();
+
+                console.log("Setting cookie:", name, value);
+
+                document.cookie = `${name}=${value}; ${expires}; path=/`;
+
+                console.log(document.cookie);
+                console.log(`${name} = ${value}; ${expires}; path=/`);
+                console.log("document.cookies:", document.cookie);
+            }
+
+            function getCookie(name) {
+                const cookieDecoded = decodeURIComponent(document.cookie);
+                const cookieArr = cookieDecoded.split("; ");
+                let result = null;
+
+                cookieArr.forEach(element => {
+                    if (element.indexOf(name) === 0) {
+                        result = element.substring(name.length + 1);
+                    }
+                });
+
+                console.log("Getting cookie:", name, result);
+
+                return result;
+            }
+
+            moon.addEventListener("click", function () {
+                toggleVisibility("sun", "moon");
+                document.body.classList.remove("dark_mode");
+                document.body.classList.toggle("light_mode");
+                const userMode = document.body.classList.contains("dark_mode") ? "dark_mode" : "light_mode";
+                setCookie("userMode", userMode, 365);
+
+                console.log(document.cookie);
+
+                cover_atas_kiri.style.backgroundColor = "var(--light_color2)";
+                
+                tengah_bawah_kiri.style.backgroundColor = "var(--light_color3)";
+                tengah_bawah_kanan.style.backgroundColor = "var(--light_color3)";
+
+                cover_atas_kiri.style.transition = "background-color 1s ease"; 
+                
+                tengah_bawah_kiri.style.transition = "background-color 1s ease";
+                tengah_bawah_kanan.style.transition = "background-color 1s ease"
+                
+                tengah_bawah_li.forEach(function(li) {   
+                    li.style.transition = "color 1s ease"; 
+                    li.style.color = "var(--light_color4)";
+                });
+
+                element_color2.forEach(function(tag){
+                    tag.style.transition = "color 1s ease";
+                    tag.style.color = "var(--light_color2)"
+                });
+
+                element_dark_color3.forEach(function(tag){
+                    tag.style.transition = "color 1s ease";
+                    tag.style.color = "var(--light_color3)"
+                });
+
+                element_dark_color4.forEach(function(tag){
+                    tag.style.transition = "color 1s ease";
+                    tag.style.color = "var(--light_color4)"
+                });
+                
+            });
+
+            sun.addEventListener("click", function () {
+                toggleVisibility("moon", "sun");
+                document.body.classList.remove("light_mode");
+                document.body.classList.toggle("dark_mode");
+                const userMode = document.body.classList.contains("dark_mode") ? "dark_mode" : "light_mode";
+                setCookie("userMode", userMode, 365);
+
+                console.log(document.cookie);
+
+                cover_atas_kiri.style.backgroundColor = "var(--dark_color2)";
+
+                tengah_bawah_kiri.style.backgroundColor = "var(--dark_color3)";
+                tengah_bawah_kanan.style.backgroundColor = "var(--dark_color3)";
+
+                cover_atas_kiri.style.transition = "background-color 1s ease"; 
+                
+                tengah_bawah_kiri.style.transition = "background-color 1s ease";
+                tengah_bawah_kanan.style.transition = "background-color 1s ease"
+                
+                tengah_bawah_li.forEach(function(li) {
+                    li.style.transition = "color 1s ease";
+                    li.style.color = "var(--dark_color4)";
+                });
+
+                element_color2.forEach(function(tag){
+                    tag.style.transition = "color 1s ease";
+                    tag.style.color = "var(--dark_color2)"
+                });
+
+                element_dark_color3.forEach(function(tag){
+                    tag.style.transition = "color 1s ease";
+                    tag.style.color = "var(--dark_color3)"
+                });
+
+                element_dark_color4.forEach(function(tag){
+                    tag.style.transition = "color 1s ease";
+                    tag.style.color = "var(--dark_color4)"
+                });
+
+            });
+        })
+    </script>
+    <div id="bagian_cover">
+        
+        <div id="atas_kiri">
+            <h2 id="moon">🌕</h2>
+            <h2 id="sun">☀️</h2>
+
+            <div id="atas_kiri_bawah">
+                <h3 class="dark_color3">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
+                <p class="dark_color4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, hic labore. Mollitia nulla hic delectus rerum eum, voluptatem aperiam laborum.</p>
+
+                <p class="dark_color4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam nulla dignissimos molestiae, quod voluptatum voluptatibus architecto aspernatur impedit qui, nemo porro saepe quisquam quos unde magnam. Vitae doloribus soluta nisi?</p>
+            </div>
+        </div>
+
+        <div id="atas_kanan">
+            <h1 class="dark_color3">HAPPY WEDDING</h1>
+
+            <h2 class="dark_color3">Fettuccine Alfred & Spaghetti Ala Bolognese</h2>
+
+            <h3 class="dark_color3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas quia nemo molestiae. Exercitationem molestias nostrum similique tenetur quae, libero, fuga eligendi modi dolor soluta illum quo adipisci eveniet quam maiores.</h3>
+
+            <h2 class="dark_color3">20<sup class="dark_color3">th</sup> January 2023</h2>
+        </div>
+
+
+    </div>
+
+    <div id="bagian_invitation">
+
+        <div id="tengah_atas">
+            <img src="images/TimeLine.jpg" alt="time line" width="700px" height="300px">
+        </div>
+
+
+        <div id="tengah_bawah">
+            <div id="tengah_bawah_kiri">
+
+                <h2 class="dark_color2">Appetizers</h2>
+                <ul>
+                    <li>Bruschetta al Pomodoro: Grilled bread topped with diced tomatoes, garlic, basil, and olive oil.</li>
+
+                    <li>Caprese Salad: Slices of fresh mozzarella, tomatoes, and basil drizzled with balsamic glaze.</li>
+
+                    <li>Arancini: Deep-fried risotto balls stuffed with mozzarella and served with marinara sauce.</li>
+                </ul>
+
+                <h2 class="dark_color2">Main Course</h2>
+                <ul>
+                    <li>Spaghetti Bolognese: Classic Italian pasta with a hearty meat sauce made from ground beef, tomatoes, and herbs.</li>
+
+                    <li>Chicken Piccata: Lightly breaded and pan-fried chicken breast in a lemon and caper sauce.</li>
+
+                    <li>Eggplant Parmesan: Slices of eggplant coated in breadcrumbs, fried, layered with marinara sauce and mozzarella, and baked to perfection.</li>
+
+                    <li>Seafood Risotto: Creamy risotto with a mix of shrimp, mussels, and clams in a saffron-infused broth.</li>
+                </ul>
+            </div>
+    
+            <div id="tengah_bawah_kanan">
+
+                <h2 class="dark_color2">Dessert</h2>
+                <ul>
+                    <li>Tiramisu: Layers of coffee-soaked ladyfingers and mascarpone cream, dusted with cocoa powder.</li>
+
+                    <li>Cannoli: Crispy pastry tubes filled with sweet ricotta cheese, chocolate chips, and candied fruit.</li>
+
+                    <li>Panna Cotta with Berry Compote: Vanilla-flavored cream pudding topped with a compote of mixed berries.</li>
+                </ul>
+
+                <h2 class="dark_color2">Beverages</h2>
+                <ul>
+                    <li>Red Wine: Chianti or Sangiovese to complement the meal.</li>
+
+                    <li>Espresso: A strong, short coffee to finish off the dining experience.</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="bagian_closing">
+        <h1 class="dark_color4">Countdown Until 20<sup class="dark_color4">Th</sup> January 2024</h1>
+
+        <div id="countdown" class="dark_color4"></div>
+    </div>
+
+</body>
+</html>
